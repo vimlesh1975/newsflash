@@ -7,17 +7,21 @@ let data2 = [
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    let i = 0
-    updatestring('id_310', data2[i]);
-    
-    setInterval(() => {
+
+    project.ready.then(() => {
         sheet.sequence.position = 0;
-        updatestring('id_310', data2[i]);
-        sheet.sequence.play({ range: [0, 10] });
-        i = i + 1;
-        if (i >= data2.length) {
-            i = 0;
-    
-        }
-    }, 7000);
+        updatestring('id_310', data2[0]);
+        sheet.sequence.play();
+
+        let i = 1;
+        setInterval(() => {
+            sheet.sequence.position = 0;
+            updatestring('id_310', data2[i]);
+            sheet.sequence.play();
+            i = i + 1;
+            if (i >= data2.length) {
+                i = 0;
+            }
+        }, 7000);
+    });
 })
